@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Request Management Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <button class="upload-btn">📁 Upload Logo</button>
+            <h1>Access Request Management Dashboard</h1>
+        </div>
+        <div class="data-updated">Data Last Updated on | 15th Jul 2023</div>
+    </header>
+
+    <main class="main-content">
+        <!-- Filters Section -->
+        <section class="filters">
+            <div class="filter-group">
+                <label for="startDate">Start date</label>
+                <input type="date" id="startDate" value="2023-04-16">
+            </div>
+            <div class="filter-group">
+                <label for="endDate">End date</label>
+                <input type="date" id="endDate" value="2023-07-16">
+            </div>
+            <div class="filter-group">
+                <label for="departmentFilter">Department Filter</label>
+                <select id="departmentFilter">
+                    <option value="All">All</option>
+                    <option value="IT">IT</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Legal">Legal</option>
+                    <option value="Customer Service">Customer Service</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="systemFilter">System Filter</label>
+                <select id="systemFilter">
+                    <option value="All">All</option>
+                    <option value="System A">System A</option>
+                    <option value="Account Management">Account Management</option>
+                    <option value="Data Reporting">Data Reporting</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Metrics Section -->
+        <section class="metrics">
+            <div class="metric-card">
+                <div class="metric-title">Total Access Requests (count)</div>
+                <div class="metric-value" id="totalRequests">1.2K</div>
+                <div class="metric-change positive">
+                    <span class="arrow">▲</span>
+                    <span>vs prev period 980 (+22%)</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Pending Requests (count)</div>
+                <div class="metric-value" id="pendingRequests">240</div>
+                <div class="metric-change positive">
+                    <span class="arrow">▲</span>
+                    <span>vs prev period 180 (+33%)</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Average Processing Time (hours)</div>
+                <div class="metric-value" id="avgProcessingTime">48</div>
+                <div class="metric-change negative">
+                    <span class="arrow">▲</span>
+                    <span>vs prev period 72 (-33%)</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Request Approval Rate (%)</div>
+                <div class="metric-value" id="approvalRate">85</div>
+                <div class="metric-change positive">
+                    <span class="arrow">▲</span>
+                    <span>vs prev period 75 (+10%)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts">
+            <div class="chart-container">
+                <div class="chart-title">Monthly Access Request Trend</div>
+                <div class="chart-wrapper">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Request Status Distribution</div>
+                <div class="pie-chart-wrapper">
+                    <canvas id="statusChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Request Types Breakdown</div>
+                <div class="pie-chart-wrapper">
+                    <canvas id="typesChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Requests by Department</div>
+                <div class="chart-wrapper">
+                    <canvas id="departmentChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container chart-container-wide">
+                <div class="chart-title">Request Processing Performance</div>
+                <div class="chart-wrapper">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Table Section -->
+        <section class="table-container">
+            <div class="table-header">
+                <div class="table-title">Detailed Access Request Log</div>
+            </div>
+            <div class="table-wrapper">
+                <table id="requestsTable">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Department</th>
+                            <th>System</th>
+                            <th>Status</th>
+                            <th>Processing Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requestTableBody">
+                        <!-- Table data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="js/data.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
